@@ -1,0 +1,20 @@
+export default function createIteratorObject(report) {
+  const reportList = Object.keys(report);
+  const myIterator = {
+    [Symbol.iterator]() {
+      let idx = 0;
+      return {
+        next() {
+          if (idx < reportList.length) {
+            return {value: report[reportList[idx++]], done: false};
+          } else {
+            return {value: undefined, done: true};
+          }
+        },
+        [Symbol.iterator]() {
+          return this;
+	}
+      };
+    }
+  };
+}
