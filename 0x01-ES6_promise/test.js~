@@ -1,13 +1,16 @@
-Promise.allSettled([
-    Promise.resolve(33),
-    new Promise((resolve) => setTimeout(() => resolve(66), 0)),
-    99,
-    Promise.reject(new Error("an error")),
-]).then((values) => console.log(values));
+import loadBalancer from "./7-load_balancer";
 
-// [
-//   { status: 'fulfilled', value: 33 },
-//   { status: 'fulfilled', value: 66 },
-//   { status: 'fulfilled', value: 99 },
-//   { status: 'rejected', reason: Error: an error }
-// ]
+const ukSuccess = 'Downloading from UK is faster';
+const frSuccess = 'Downloading from FR is faster';
+
+const promiseUK = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 100, ukSuccess);
+});
+
+const promiseUKSlow = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 400, ukSuccess);
+});
+
+const promiseFR = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 200, frSuccess);
+});
