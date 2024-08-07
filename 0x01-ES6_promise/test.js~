@@ -1,4 +1,4 @@
-import getResponseFromAPI from "./0-promise.js";
+import handleResponseFromAPI from "./2-then";
 
-const response = getResponseFromAPI();
-console.log(response instanceof Promise);
+const promise = Promise.resolve('test');
+handleResponseFromAPI(promise);
