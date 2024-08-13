@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-expressions */
-export default function cleanSet(set, startString) {
-  let str = '';
-  if (startString === '') return '';
-  set.forEach((element) => {
-    if (element.slice(0, startString.length) === startString) str === '' ? str = element.slice(startString.length) : str += `-${element.slice(startString.length)}`;
-  });
-  return str;
-}
+const cleanSet = (set, startString) => {
+    if (startString === undefined || startString.length === 0) {
+	return '';
+    }
+    return [...set]
+        .filter((parametro) => (parametro !== undefined ? parametro.startsWith(startString) : ''))
+        .map((parametro) => (parametro !== undefined ? parametro.slice(startString.length) : ''))
+        .join('-');
+};
+
+export default cleanSet;
