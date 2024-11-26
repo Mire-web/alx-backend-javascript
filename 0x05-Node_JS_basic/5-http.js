@@ -66,3 +66,5 @@ const app = http.createServer(async (req, res) => {
 
 app.listen(PORT, host, () => {
 });
+
+module.exports = app;
