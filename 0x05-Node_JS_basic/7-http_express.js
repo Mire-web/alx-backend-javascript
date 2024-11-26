@@ -4,7 +4,6 @@ const app = express();
 
 const port = 1245;
 
-
 function countStudents(fileName) {
 	const students = {};
 	const fields = {};
@@ -45,13 +44,13 @@ function countStudents(fileName) {
 	  });
 	});
   }
+  
 
 app.get('/', (req, res) => {
 	res.send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
-	res.type('text/plain')
 	countStudents(process.argv[0].toString()).then((data) => {
 		res.send(['This is the list of our students', output].join('\n'));
 	}).catch (() => {
