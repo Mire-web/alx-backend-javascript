@@ -24,3 +24,5 @@ function readDatabase(fileName){
 		});
 	});
 }
+
+module.exports = readDatabase;
