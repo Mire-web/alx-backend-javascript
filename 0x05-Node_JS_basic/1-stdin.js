@@ -1,10 +1,10 @@
-process.stdout.write("Welcome to Holberton School, what is your name?\n")
+console.log("Welcome to Holberton School, what is your name?")
 process.stdin.setEncoding("utf8")
 process.stdin.on('data', (chunk) => {
-	process.stdout.write("Your name is: " + chunk)
+	console.log("Your name is: " + chunk)
 	process.exit()
 })
 process.on('exit', () => {
 	if (!process.stdin.isTTY)
-		process.stdout.write("This important software is now closing\n")
+		console.log("This important software is now closing")
 })
