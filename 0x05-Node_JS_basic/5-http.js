@@ -65,5 +65,4 @@ const app = http.createServer(async (req, res) => {
 });
 
 app.listen(PORT, host, () => {
-	console.log('listening on 1245');
 });
