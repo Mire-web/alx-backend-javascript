@@ -2,7 +2,7 @@ const http = require('http');
 const { readFile } = require('fs');
 
 const host = '127.0.0.1';
-const PORT = 1247;
+const PORT = 1245;
 
 
 function countStudents(fileName) {
