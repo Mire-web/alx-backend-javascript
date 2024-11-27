@@ -1,28 +1,26 @@
 const { readFile } = require('fs');
 
-function readDatabase(fileName){
-	return new Promise((resolve, reject) => {
-		readFile(fileName, (err, data) => {
-			if (err){
-				reject(err);
-			} else {
-				const result = {};
-				const db = data.toString().split('\n');
-				const headers = db.slice(1);
-				for (let i = 0; i < headers.length; i++){
-					if (headers[i]) {
-						const field = headers[i].toString().split(',');
-						if (Object.prototype.hasOwnProperty.call(result, field[3])) {
-							result[field[3]].push(field[0]);
-						} else {
-							result[field[3]] = [field[0]];
-						}
-					}
-				}
-				resolve(result);
-			}
-		});
-	});
-}
-
-module.exports = readDatabase;
+module.exports = function readDatabase(filePath) {
+  const students = {};
+  return new Promise((resolve, reject) => {
+    readFile(filePath, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const lines = data.toString().split('\n');
+        const noHeader = lines.slice(1);
+        for (let i = 0; i < noHeader.length; i += 1) {
+          if (noHeader[i]) {
+            const field = noHeader[i].toString().split(',');
+            if (Object.prototype.hasOwnProperty.call(students, field[3])) {
+              students[field[3]].push(field[0]);
+            } else {
+              students[field[3]] = [field[0]];
+            }
+          }
+        }
+        resolve(students);
+      }
+    });
+  });
+};
