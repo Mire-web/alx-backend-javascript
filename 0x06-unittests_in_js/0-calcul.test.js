@@ -11,4 +11,10 @@ describe("calculateNumber", function(){
   it("...", function(){
     assert.strictEqual(calculateNumber(1.2, 3.7), 5);
   })
+  it("...", function(){
+    assert.strictEqual(calculateNumber(-1.2, -3.8), -5)
+  })
+  it("...", function(){
+    assert.strictEqual(calculateNumber(-2, 3.8), 2)
+  })
 })
