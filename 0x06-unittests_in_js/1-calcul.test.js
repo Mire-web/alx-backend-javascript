@@ -28,4 +28,7 @@ describe('calculateNumber', function() {
       assert.strictEqual(calculateNumber('DIVIDE', -1.4, 0), 'Error');
     });
   });
+  it('should sum negative numbers', function(){
+	assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.6), 0.2);
+  });
 });
